@@ -82,7 +82,7 @@ class Copy:
         else:
             self.dest = file
 
-    def execute(self, *, sysroot, out):
+    def execute(self, *, profile, sysroot, out):
         print(f"COPY {self.src} -> {self.dest}")
         src_abs = os.path.join(sysroot, self.src)
         dest_abs = os.path.join(out, self.dest)
@@ -227,6 +227,7 @@ profiles["raspi4"] = Profile(
         Copy("usr/lib/raspi-firmware/fixup4.dat"),
         GenInitrd("initrd.cpio"),
         CopyData("config.txt", RPI4_CONFIG_TXT),
+        CopyData("cmdline.txt", "serial"),
     ],
 )
 
