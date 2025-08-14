@@ -12,9 +12,13 @@ import tempfile
 DTS_TRANS = str.maketrans({'"': '\\"'})
 
 RPI4_CONFIG_TXT = """\
-dtoverlay=highperi
 enable_uart=1
 uart_2ndstage=1
+
+# Uncomment for JTAG debugging:
+# gpio=22-27=np
+# enable_jtag_gpio=1
+
 initramfs initrd.cpio followkernel
 """
 
